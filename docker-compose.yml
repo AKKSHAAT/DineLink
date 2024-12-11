@@ -1,0 +1,50 @@
+services:
+  # PostgreSQL Service
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: dineLinkDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_container
+    ports:
+      - "5000:5000"
+    environment:
+      PG_USER: root
+      PG_PASSWORD: 12345
+      PG_HOST: postgres
+      PG_DATABASE: dineLinkDB
+      PG_PORT: 5432
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+
+  # React App for Development
+  react_app_dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react_app_dev_container
+    ports:
+      - "5173:5173"  # Vite's default dev server port
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
