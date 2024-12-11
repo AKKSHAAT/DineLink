@@ -6,9 +6,9 @@ const router = express.Router();
 router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
     const allUsers = await User.findAll({});
-    res.status(201).json({ msg: "user Created", allUsers });
+    res.status(201).json({ msg: "users found", allUsers });
   } catch (error) {
-    res.status(201).json({ msg: "cannot create user", error });
+    res.status(201).json({ msg: "cannot find user", error });
   }
 });
 

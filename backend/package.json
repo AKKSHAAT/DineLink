@@ -5,7 +5,8 @@
   "main": "./src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "seed": "ts-node src/seeders/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,8 @@
     "express": "^4.21.2",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
