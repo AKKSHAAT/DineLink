@@ -1,27 +1,33 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../database";
+import Category from "./Category";
 
-// Interface for Menu attributes
-interface MenuAttributes {
+// MenuItem attributes interface
+interface MenuItemAttributes {
   id: number;
   name: string;
-  description: string;
+  description?: string;
   price: number;
-  image?: string; // Optional field for the image URL
+  image?: string;
+  categoryId?: number; // Foreign key for Category
 }
 
-// Interface for creating a Menu item (id is optional)
-interface MenuCreationAttributes extends Optional<MenuAttributes, "id"> {}
+// Optional attributes for menu item creation (id can be optional)
+interface MenuItemCreationAttributes extends Optional<MenuItemAttributes, "id"> {}
 
-class MenuItem extends Model<MenuAttributes, MenuCreationAttributes> implements MenuAttributes {
+class MenuItem
+  extends Model<MenuItemAttributes, MenuItemCreationAttributes>
+  implements MenuItemAttributes
+{
   public id!: number;
   public name!: string;
-  public description!: string;
+  public description?: string;
   public price!: number;
   public image?: string;
+  public categoryId?: number;
 }
 
-// Initialize the model
+// Initialize the MenuItem model
 MenuItem.init(
   {
     id: {
@@ -35,7 +41,7 @@ MenuItem.init(
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     price: {
       type: DataTypes.FLOAT,
@@ -45,6 +51,14 @@ MenuItem.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Category,
+        key: "id",
+      },
+      allowNull: true,
+    },
   },
   {
     sequelize,
@@ -52,5 +66,9 @@ MenuItem.init(
     timestamps: true,
   }
 );
+
+// Define association
+MenuItem.belongsTo(Category, { foreignKey: "categoryId" });
+Category.hasMany(MenuItem, { foreignKey: "categoryId" });
 
 export default MenuItem;

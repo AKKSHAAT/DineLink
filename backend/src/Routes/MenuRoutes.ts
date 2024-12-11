@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import MenuItem from "../models/MenuItem";
+import Category from "../models/Category";
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ const router = express.Router();
  */
 router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
-    const menuItems = await MenuItem.findAll();
+    const menuItems = await MenuItem.findAll({ include: Category });
     res.status(200).json({ msg: "Menu items retrieved", menuItems });
   } catch (error) {
     res.status(500).json({ msg: "Error fetching menu items", error });
@@ -20,9 +21,9 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
  */
 router.post("/", async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, description, price, image } = req.body;
-    const newMenuItem = await MenuItem.create({ name, description, price, image });
-    res.status(201).json({ msg: "Menu item created", menuItem: newMenuItem });
+      const { name, description, price, image, categoryId } = req.body;
+      const menuItem = await MenuItem.create({ name, description, price, image, categoryId });
+      res.status(201).json({ msg: "Menu item created", menuItem });
   } catch (error) {
     res.status(500).json({ msg: "Error creating menu item", error });
   }
@@ -34,7 +35,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
 router.put("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { name, description, price, image } = req.body;
+    const { name, description, price, image, categoryId } = req.body;
 
     const menuItem = await MenuItem.findByPk(id);
     if (!menuItem) {
@@ -42,7 +43,7 @@ router.put("/:id", async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    await menuItem.update({ name, description, price, image });
+    await menuItem.update({ name, description, price, image, categoryId});
     res.status(200).json({ msg: "Menu item updated", menuItem });
   } catch (error) {
     res.status(500).json({ msg: "Error updating menu item", error });

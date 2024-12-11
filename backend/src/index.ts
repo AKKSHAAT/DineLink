@@ -5,6 +5,7 @@ import sequelize from "./database";
 import userRoutes from './Routes/userRoutes';
 import restaurantRotes from './Routes/restaurantRoutes';
 import menuRoutes from './Routes/MenuRoutes'
+import categoryRoutes from "./Routes/CategoryRoutes";
 
 dotenv.config();
 const app: Application = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/api/res", restaurantRotes);
 app.use("/api/user", userRoutes); 
 app.use("/api/menu", menuRoutes);
+app.use("/api/category", categoryRoutes);
 
 
 
