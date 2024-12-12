@@ -1,6 +1,8 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../database";
 import Category from "./Category";
+import OrderMenuItem from "./OrderMenuItem";
+import Order from "./Order";
 
 // MenuItem attributes interface
 interface MenuItemAttributes {
@@ -67,7 +69,7 @@ MenuItem.init(
   }
 );
 
-// Define association
+
 MenuItem.belongsTo(Category, { foreignKey: "categoryId" });
 Category.hasMany(MenuItem, { foreignKey: "categoryId" });
 
