@@ -4,8 +4,8 @@ export const seedRestaurants = async (): Promise<void> => {
   const restaurantsData = [
     {
       name: "Pasta Paradise",
-      email: "pasta@paradise.com",
-      password: "securepass123",
+      email: "pasta@p.com",
+      password: "$2a$10$d08QkIZnCOdJGfc/F2gwVOiLXwKLEgIAQDm3U8HHlyGcp.cfWkm0G",
       address: "123 Noodle Street, Flavor Town",
     },
     {

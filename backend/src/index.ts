@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 import sequelize from "./database";
+import cors from 'cors';
 
 import userRoutes from './Routes/userRoutes';
 import restaurantRotes from './Routes/restaurantRoutes';
@@ -14,6 +15,8 @@ import { seedMenuItems } from "./seeders/createMenuItems";
 dotenv.config();
 const app: Application = express();
 const PORT: number = parseInt(process.env.PORT || "5000", 10);
+
+app.use(cors());
 app.use(express.json());
 app.use("/api/res", restaurantRotes);
 app.use("/api/user", userRoutes); 
