@@ -4,6 +4,9 @@ import App from "./App";
 import { NotFound } from "./pages/NotFound";
 import Login  from "./pages/Login";
 import Register from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
+import { Menu } from "./pages/Menu";
+import { Cart } from "./pages/Cart";
 
 
 const router = createBrowserRouter([
@@ -13,6 +16,9 @@ const router = createBrowserRouter([
     children: [
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/dashboard", element: <Dashboard /> },    
+      { path: "/menu", element: <Menu /> },    
+      { path: "/cart", element: <Cart /> },   
       { path: "*", element: <NotFound /> },         // 404 fallback route
     ],
   },

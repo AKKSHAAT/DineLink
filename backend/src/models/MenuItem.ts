@@ -15,7 +15,8 @@ interface MenuItemAttributes {
 }
 
 // Optional attributes for menu item creation (id can be optional)
-interface MenuItemCreationAttributes extends Optional<MenuItemAttributes, "id"> {}
+interface MenuItemCreationAttributes
+  extends Optional<MenuItemAttributes, "id"> {}
 
 class MenuItem
   extends Model<MenuItemAttributes, MenuItemCreationAttributes>
@@ -68,7 +69,6 @@ MenuItem.init(
     timestamps: true,
   }
 );
-
 
 MenuItem.belongsTo(Category, { foreignKey: "categoryId" });
 Category.hasMany(MenuItem, { foreignKey: "categoryId" });

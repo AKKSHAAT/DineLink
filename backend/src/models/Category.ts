@@ -9,7 +9,8 @@ interface CategoryAttributes {
 }
 
 // Optional attributes for category creation (id can be optional)
-interface CategoryCreationAttributes extends Optional<CategoryAttributes, "id"> {}
+interface CategoryCreationAttributes
+  extends Optional<CategoryAttributes, "id"> {}
 
 class Category
   extends Model<CategoryAttributes, CategoryCreationAttributes>

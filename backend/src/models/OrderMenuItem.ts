@@ -44,8 +44,13 @@ OrderMenuItem.init(
 // Define the relationships
 // Define many-to-many relationships
 // Define many-to-many relationships
-Order.belongsToMany(MenuItem, { through: OrderMenuItem, foreignKey: "orderId" });
-MenuItem.belongsToMany(Order, { through: OrderMenuItem, foreignKey: "menuItemId" });
-
+Order.belongsToMany(MenuItem, {
+  through: OrderMenuItem,
+  foreignKey: "orderId",
+});
+MenuItem.belongsToMany(Order, {
+  through: OrderMenuItem,
+  foreignKey: "menuItemId",
+});
 
 export default OrderMenuItem;

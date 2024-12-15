@@ -1,4 +1,9 @@
-import { DataTypes, Model, Optional, BelongsToManyAddAssociationMixin } from "sequelize";
+import {
+  DataTypes,
+  Model,
+  Optional,
+  BelongsToManyAddAssociationMixin,
+} from "sequelize";
 import sequelize from "../database";
 import Restaurant from "./Restaurant";
 import MenuItem from "./MenuItem";
@@ -64,7 +69,6 @@ Order.init(
     timestamps: true,
   }
 );
-
 
 Order.belongsTo(Restaurant, { foreignKey: "restaurantId" });
 
