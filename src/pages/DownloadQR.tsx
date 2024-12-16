@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 export const DownloadQR = () => {
   const [qrUrl, setQrUrl] = useState("");
   // const canvasRef = useRef(null);
-  const downloadUrl = "https://dinelink.onrender.com/menu";
+  const downloadUrl = "https://dinelink.netlify.app/menu";
 
   useEffect(() => {
     generateQR();
