@@ -78,8 +78,7 @@ const AddMenuItemForm = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="w-full p-3 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="Enter item name"
-            required
+            placeholder="about item"
           />
         </div>
 
@@ -99,7 +98,7 @@ const AddMenuItemForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-primary text-white p-3 rounded-md hover:bg-primary-dark"
+          className="w-full bg-primary bg-pink-500 text-white font-semibold p-3 rounded-md hover:bg-primary-dark"
         >
           Add Menu Item
         </button>

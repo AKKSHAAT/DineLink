@@ -6,8 +6,8 @@ import { useAuthStore } from "../stores/authStore";
 const Login = () => {
   const navigate = useNavigate();
   const { setAuth } = useAuthStore();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("pasta@p.com");
+  const [password, setPassword] = useState("12345");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -20,7 +20,7 @@ const Login = () => {
       if (response.status === 200) {
         console.log("Logged in");
         setAuth(data.token, email); // Store token and email in Zustand
-        navigate("/dashboard");
+        navigate("/orders");
       } else {
         setErrorMessage(data.msg);
       }
@@ -54,7 +54,7 @@ const Login = () => {
             placeholder="Enter your password"
           />
         </div>
-        <button type="submit" className="w-full bg-primary text-primary-foreground">
+        <button type="submit" className="w-full bg-primary text-primary-foreground px-2 py-1 bg-pink-500 rounded text-white">
           Login
         </button>
         <div className="text-center mt-4">

@@ -9,6 +9,8 @@ import { Menu } from "./pages/Menu";
 import { Cart } from "./pages/Cart";
 import { Order } from "./pages/order";
 import AddMenuItemForm from './pages/AddMenuItemForm';
+import { OrderComplete } from "./pages/Order-complete";
+import { DownloadQR } from "./pages/DownloadQR";
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
       { path: "/cart", element: <Cart /> },   
       { path: "/orders", element: <Order /> },   
       { path: "/additem", element: <AddMenuItemForm /> },   
+      { path: "/order-complete", element: <OrderComplete/> },   
+      { path: "/get-qr", element: <DownloadQR/> },   
       { path: "*", element: <NotFound /> },         // 404 fallback route
     ],
   },

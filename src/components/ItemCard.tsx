@@ -1,7 +1,11 @@
+import { useAuthStore } from "@/stores/authStore";
 import useOrderStore from "../stores/orderStore";
+import { useNavigate } from "react-router-dom";
 
 export const ItemCard = ({ item }) => {
+  const navigate = useNavigate();
   const { order, addItem, updateItemQuantity, resetOrder } = useOrderStore();
+  const { email } = useAuthStore();
 
   return (
     <div className="w-44 h-56 bg-gray-100 rounded p-2 flex flex-col">
@@ -23,6 +27,22 @@ export const ItemCard = ({ item }) => {
           Add
         </button>
       </div>
+      {email && (
+        <div className="flex">
+          <button
+            onClick={() => navigate("/get-qr")}
+            className="fixed bottom-16 right-36 pb-1 bg-pink-500 text-white hover:bg-pink-600 rounded-full w-14 h-14 flex items-center justify-center text-3xl font-bold shadow-lg transition-transform transform hover:scale-110"
+          >
+            ⬇️
+          </button>
+          <button
+            onClick={() => navigate("/additem")}
+            className="fixed bottom-16 right-16 pb-1 bg-pink-500 text-white hover:bg-pink-600 rounded-full w-14 h-14 flex items-center justify-center text-3xl font-bold shadow-lg transition-transform transform hover:scale-110"
+          >
+            +
+          </button>
+        </div>
+      )}
     </div>
   );
 };

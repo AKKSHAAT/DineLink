@@ -40,9 +40,9 @@ export const OrderCard = ({ data }: { data: Data[] }) => {
   return (
     <div>
       {orders.map((order) => (
-        <div key={order.id} className="p-4 mb-4 bg-white shadow rounded">
+        <div key={order.id} className={`w-[350px] p-4 mb-4 bg-white shadow rounded`}>
           <p className="font-bold">Order No: {order.id}</p>
-          <div className="mb-2">
+          <div className="mb-2 flex items-center">
             <label className="font-semibold mr-2">Status:</label>
             <select
               value={order.status}
@@ -53,6 +53,8 @@ export const OrderCard = ({ data }: { data: Data[] }) => {
               <option value="in progress">In Progress</option>
               <option value="completed">Completed</option>
             </select>
+            {order.status === 'completed' && <p className="mx-2">✅</p>}
+            {order.status === 'in progress' && <p className="mx-2">⌛</p>}
           </div>
           <p className="text-xs text-gray-700">Table No: {order.tableNo}</p>
           {order.MenuItems.map((item) => (

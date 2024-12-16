@@ -2,7 +2,6 @@ import Loading from "@/components/Loading";
 import useFetch from "@/hooks/useFetch";
 import { OrderCard } from "./OrderCard";
 
-
 interface MenuItems {
   id: number;
   name: string;
@@ -25,9 +24,13 @@ export const Order = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="w-72 mb-5 p-4">
+    <div className="w-full mb-5 p-4">
       <p className="text-lg font-bold mb-2">Orders</p>
-      <OrderCard data={data} />
+      <div className="max-h-[450px] overflow-y-auto border rounded-lg shadow-md p-2 flex flex-wrap gap-4">
+        {data?.map((order) => (
+          <OrderCard key={order.id} data={[order]} />
+        ))}
+      </div>
     </div>
   );
 };
