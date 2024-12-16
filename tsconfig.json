@@ -5,8 +5,10 @@
       "@/*": ["./src/*"]
     },
     "outDir": "./dist",  // Build folder for the frontend
-    "jsx": "react",
-    "moduleResolution": "node"
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true, 
+    "skipLibCheck": true,
   },
   "exclude": [
     "backend",  // Explicitly exclude the backend folder
