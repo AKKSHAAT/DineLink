@@ -1,14 +1,15 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "outDir": "./dist",  // Build folder for the frontend
+    "jsx": "react",
+    "moduleResolution": "node"
   },
-  "exclude": ["backend"]
+  "exclude": [
+    "backend",  // Explicitly exclude the backend folder
+    "node_modules"
+  ]
 }
