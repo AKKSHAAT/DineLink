@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api', // Replace with your API base URL
+  baseURL: 'https://dinelink.onrender.com/api', // Replace with your API base URL
   headers: {
     'Content-Type': 'application/json',
   },
