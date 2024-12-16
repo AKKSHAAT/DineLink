@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import { Dashboard } from "./pages/Dashboard";
 import { Menu } from "./pages/Menu";
 import { Cart } from "./pages/Cart";
-import { Order } from "./pages/order";
+import { Order } from "./pages/Order";
 import AddMenuItemForm from './pages/AddMenuItemForm';
 import { OrderComplete } from "./pages/Order-complete";
 import { DownloadQR } from "./pages/DownloadQR";

@@ -2,9 +2,17 @@ import { useAuthStore } from "@/stores/authStore";
 import useOrderStore from "../stores/orderStore";
 import { useNavigate } from "react-router-dom";
 
-export const ItemCard = ({ item }) => {
+interface Item {
+  id: number;
+  name: string;
+  description?: string;
+  price: number;
+}
+
+
+export const ItemCard =({ item }: { item: Item }) => {
   const navigate = useNavigate();
-  const { order, addItem, updateItemQuantity, resetOrder } = useOrderStore();
+  const {addItem } = useOrderStore();
   const { email } = useAuthStore();
 
   return (

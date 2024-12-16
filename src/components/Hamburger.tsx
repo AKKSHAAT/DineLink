@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useOrderStore from "../stores/orderStore";
 import { useAuthStore } from "../stores/authStore";

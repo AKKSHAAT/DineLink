@@ -22,7 +22,6 @@ const AddMenuItemForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
       const response = await axiosInstance.post(
         "menu",{
           name,

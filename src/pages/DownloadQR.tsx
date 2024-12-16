@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 
 export const DownloadQR = () => {
   const [qrUrl, setQrUrl] = useState("");
-  const canvasRef = useRef(null);
+  // const canvasRef = useRef(null);
   const downloadUrl = "https://dinelink.onrender.com/menu";
 
   useEffect(() => {

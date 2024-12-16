@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import {Outlet } from "react-router-dom";
 import { Hamburger } from "./components/Hamburger";
 import { NavBar } from "./components/NavBar";
 
