@@ -1,4 +1,4 @@
-import useOrderStore from "../orderStore";
+import useOrderStore from "../stores/orderStore";
 
 export const ItemCard = ({ item }) => {
   const { order, addItem, updateItemQuantity, resetOrder } = useOrderStore();
@@ -16,7 +16,10 @@ export const ItemCard = ({ item }) => {
         <h3 className="truncate font-semibold">{item.name}</h3>
         <p className="truncate">{item.description}</p>
         <p className="truncate font-medium">₹{item.price}</p>
-        <button className="bg-pink-500 text-white py-2 rounded w-full" onClick={()=> addItem(item.id, item.name, item.price)}>
+        <button
+          className="bg-pink-500 text-white py-2 rounded w-full"
+          onClick={() => addItem(item.id, item.name, item.price)}
+        >
           Add
         </button>
       </div>

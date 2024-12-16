@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { Hamburger } from "./components/Hamburger";
+import { NavBar } from "./components/NavBar";
 
 function App() {
   return (
@@ -7,10 +8,7 @@ function App() {
       <div className="flex">
         <Hamburger />
         <div className="flex flex-col w-full">
-          <nav className="flex mb-5  gap-3 justify-end ">
-            <Link to={"/login"}>login</Link>
-            <Link to={"/register"}>Register</Link>
-          </nav>
+          <NavBar />
           <section className="px-8">
             <Outlet />
           </section>

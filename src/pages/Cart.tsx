@@ -1,17 +1,16 @@
 import axiosInstance from "@/axios.config";
-import useOrderStore from "@/orderStore";
+import useOrderStore from "@/stores/orderStore";
 import { useNavigate } from "react-router-dom";
-
 
 export const Cart = () => {
   const { order } = useOrderStore();
   const navigate = useNavigate();
 
-  async function sendOrder () {
+  async function sendOrder() {
     const o = { ...order, restaurantId: 1 };
-    const res = await axiosInstance.post('/order',o);
+    const res = await axiosInstance.post("/order", o);
     console.log("Res: ", res);
-    navigate('/orders');
+    navigate("/orders");
   }
   if (order.itemList.length === 0) return <p>cart is empty</p>;
   return (

@@ -8,6 +8,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Menu } from "./pages/Menu";
 import { Cart } from "./pages/Cart";
 import { Order } from "./pages/order";
+import AddMenuItemForm from './pages/AddMenuItemForm';
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/menu", element: <Menu /> },    
       { path: "/cart", element: <Cart /> },   
       { path: "/orders", element: <Order /> },   
+      { path: "/additem", element: <AddMenuItemForm /> },   
       { path: "*", element: <NotFound /> },         // 404 fallback route
     ],
   },

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from '../axios.config';
+import axiosInstance from "../axios.config";
+import { useAuthStore } from "../stores/authStore";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setAuth } = useAuthStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -11,29 +13,27 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await axiosInstance.post("res/login", {email, password });
+    try {
+      const response = await axiosInstance.post("res/login", { email, password });
+      const data = await response.data;
 
-    const data = await response.data;
-    if (response.status === 200) {
-      console.log("logged in");
-      // Store the token and navigate to the dashboard or home
-      localStorage.setItem("token", data.token);
-      navigate("/dashboard");
-    } else {
-      setErrorMessage(data.msg);
+      if (response.status === 200) {
+        console.log("Logged in");
+        setAuth(data.token, email); // Store token and email in Zustand
+        navigate("/dashboard");
+      } else {
+        setErrorMessage(data.msg);
+      }
+    } catch (error) {
+      setErrorMessage("Login failed. Please check your credentials.");
     }
   };
 
   return (
     <div className="flex justify-center items-center h-screen bg-background">
-      <form
-        onSubmit={handleLogin}
-        className="bg-white p-8 rounded-lg shadow-lg w-96"
-      >
+      <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        {errorMessage && (
-          <div className="mb-4 text-red-500 text-center">{errorMessage}</div>
-        )}
+        {errorMessage && <div className="mb-4 text-red-500 text-center">{errorMessage}</div>}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Email</label>
           <input

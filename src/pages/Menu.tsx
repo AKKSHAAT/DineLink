@@ -1,6 +1,8 @@
 import useFetch from "@/hooks/useFetch";
 import Loading from "@/components/Loading";
 import { ItemCard } from "@/components/ItemCard";
+import { useAuthStore } from "../stores/authStore";
+import { useNavigate } from "react-router-dom";
 
 
 interface MenuItem {
@@ -17,6 +19,9 @@ interface Data {
 }
 
 export const Menu = () => {
+  const navigate = useNavigate();
+  const { email, logout } = useAuthStore();
+
   const { data, loading, error } = useFetch<Data>("/menu");
   if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
@@ -28,6 +33,8 @@ export const Menu = () => {
          <ItemCard item={item}/>
         </li>
       ))}
+      
     </ul>
+    
   );
 };
