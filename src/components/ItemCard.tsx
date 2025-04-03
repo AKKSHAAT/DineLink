@@ -16,7 +16,7 @@ export const ItemCard =({ item }: { item: Item }) => {
   const { email } = useAuthStore();
 
   return (
-    <div className="w-44 h-56 bg-gray-100 rounded p-2 flex flex-col">
+    <div className="w-44 h-56 bg-gray-200 rounded p-2 flex flex-col">
       <div className="h-32 overflow-hidden">
         <img
           className="w-full h-full object-cover rounded"
